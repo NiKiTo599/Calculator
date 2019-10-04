@@ -1,7 +1,7 @@
 {
   "name": "calculator",
   "version": "0.1.0",
-  "homepage": "https://nikito599.github.io/calculator",
+  "homepage": "https://nikito599.github.io/Calculator",
   "private": true,
   "dependencies": {
     "expr-eval": "^2.0.2",
