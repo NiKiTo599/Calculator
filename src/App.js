@@ -12,11 +12,17 @@ export default class App extends React.Component {
   }
   state = {
     valueForFirstField: "0",
-    valueForSecondField: ""
+    valueForSecondField: "0",
   };
 
   changeValueForFirstField = value => {
-    if (value === "ac") {
+    if (this.state.valueForFirstField[this.state.valueForFirstField.length - 1] === '.' && value === '.') return;
+    if (this.state.valueForFirstField[0] === '0' && value === '0') return;
+    console.log(value, typeof(value), value === '=')
+    if (this.state.valueForFirstField.length >= 17 && !isNaN(+value) && value !== '.') {
+      return;
+    }
+    if (value === "AC") {
       this.setState({
         valueForFirstField: "0",
         valueForSecondField: ""
@@ -25,27 +31,58 @@ export default class App extends React.Component {
     }
     if (value === "=") {
       this.setState({
-        valueForFirstField: `${this.parser.evaluate(this.state.valueForSecondField)}`,
-        valueForSecondField: `${this.state.valueForSecondField}=${this.parser.evaluate(this.state.valueForSecondField)}`
+        valueForFirstField: `${this.parser.evaluate(
+          this.state.valueForSecondField
+        )}`,
+        valueForSecondField: `${
+          this.state.valueForSecondField
+        }=${this.parser.evaluate(this.state.valueForSecondField)}`
       });
       return;
     }
-    const equal = this.state.valueForSecondField.indexOf('=');
+    if (
+      isNaN(+value) &&
+      value !== "." &&
+      isNaN(
+        +this.state.valueForSecondField[
+          this.state.valueForSecondField.length - 1
+        ]
+      ) &&
+      this.state.valueForSecondField[
+        this.state.valueForSecondField.length - 1
+      ] !== "."
+    ) {
+      const item = this.state.valueForSecondField[this.state.valueForSecondField.length - 1];
+      this.setState({
+        valueForFirstField: value,
+        valueForSecondField: this.state.valueForSecondField.replace(item, value)
+      })
+      return;
+    }
+    const equal = this.state.valueForSecondField.indexOf("=");
     if (equal !== -1) {
       this.setState({
-        valueForSecondField: `${this.state.valueForFirstField}`
-      })
+        valueForSecondField: this.state.valueForFirstField + value,
+        valueForFirstField: this.state.valueForFirstField + value
+      });
+      return;
     }
     if (!isNaN(+value) || value === ".") {
-      console.log(this.state.valueForFirstField,isNaN(+this.state.valueForFirstField))
+      console.log(
+        this.state.valueForFirstField,
+        isNaN(+this.state.valueForFirstField)
+      );
       if (isNaN(+this.state.valueForFirstField)) {
-        console.log(1)
+        console.log(1);
         this.setState({
           valueForFirstField: value,
           valueForSecondField: this.state.valueForSecondField + value
         });
-      } else if (this.state.valueForSecondField.legth <= this.state.valueForFirstField.legth) {
-        console.log(2)
+      } else if (
+        this.state.valueForSecondField.legth <=
+        this.state.valueForFirstField.legth
+      ) {
+        console.log(2);
         this.setState({
           valueForFirstField: this.state.valueForFirstField + value,
           valueForSecondField: this.state.valueForFirstField + value
@@ -65,7 +102,7 @@ export default class App extends React.Component {
       this.setState({
         valueForSecondField: this.state.valueForFirstField + value,
         valueForFirstField: value
-      })
+      });
     }
   };
 

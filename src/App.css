@@ -1,19 +1,29 @@
-@import url(https://fonts.googleapis.com/css?family=Raleway:400,500);
+@import url(https://fonts.googleapis.com/css?family=Raleway:400, 500);
 :root {
   --var-back: rgb(255, 255, 255);
 }
 @font-face {
   font-family: "Digital";
   src: url("//db.onlinewebfonts.com/t/8e22783d707ad140bffe18b2a3812529.eot");
-  src: url("//db.onlinewebfonts.com/t/8e22783d707ad140bffe18b2a3812529.eot?#iefix") format("embedded-opentype"), url("//db.onlinewebfonts.com/t/8e22783d707ad140bffe18b2a3812529.woff2") format("woff2"), url("//db.onlinewebfonts.com/t/8e22783d707ad140bffe18b2a3812529.woff") format("woff"), url("//db.onlinewebfonts.com/t/8e22783d707ad140bffe18b2a3812529.ttf") format("truetype"), url("//db.onlinewebfonts.com/t/8e22783d707ad140bffe18b2a3812529.svg#Digital-7") format("svg");
+  src: url("//db.onlinewebfonts.com/t/8e22783d707ad140bffe18b2a3812529.eot?#iefix")
+      format("embedded-opentype"),
+    url("//db.onlinewebfonts.com/t/8e22783d707ad140bffe18b2a3812529.woff2")
+      format("woff2"),
+    url("//db.onlinewebfonts.com/t/8e22783d707ad140bffe18b2a3812529.woff")
+      format("woff"),
+    url("//db.onlinewebfonts.com/t/8e22783d707ad140bffe18b2a3812529.ttf")
+      format("truetype"),
+    url("//db.onlinewebfonts.com/t/8e22783d707ad140bffe18b2a3812529.svg#Digital-7")
+      format("svg");
 }
 
 main {
-  height: 99vh;
+  height: 100vh;
   width: 100%;
   display: flex !important;
   justify-content: center;
   align-items: center;
+  background-color: #353434;
 }
 
 table {
@@ -23,6 +33,7 @@ table {
 .calculator-container {
   background-color: black;
   width: 21rem;
+  padding: 5px;
   display: flex !important;
   flex-flow: column nowrap;
   justify-content: center;
@@ -32,7 +43,7 @@ table {
 .quadrate {
   width: 5rem;
   height: 5rem;
-  background-color: #4D4D4D;
+  background-color: #4d4d4d;
   text-align: center;
   margin: 0.5rem;
   color: white;
@@ -40,7 +51,7 @@ table {
 
 .quadrate:hover {
   color: black;
-  outline: .05em solid grey;
+  outline: 0.05em solid grey;
   z-index: 3;
   cursor: pointer;
 }
@@ -54,14 +65,14 @@ table {
 }
 
 .red {
-  background-color: #AC3939;
+  background-color: #ac3939;
 }
 
 .blue {
   background-color: #004466;
 }
 
-.inputs {
+/* .inputs {
   width: 100%;
   height: 5rem;
   padding: 1rem;
@@ -73,12 +84,28 @@ table {
   outline: none;
   font-family: digital;
   font-size: 2.5rem;
-}
+} */
 
 #first-input {
-  color: #A26900;
+  min-height: 20px;
+  font-family: digital;
+  font-size: 20px;
+  width: 100%;
+  color: orange;
+  text-align: right;
+  vertical-align: text-top;
+  line-height: 20px;
+  overflow-wrap: break-word;
+  padding: 5px;
+  word-wrap: break-word;
 }
 
-#second-input {
+#display {
+  font-size: 29px;
+  font-family: digital;
   color: white;
+  text-align: right;
+  padding: 5px;
+  width: 100%;
+  line-height: 35px;
 }
